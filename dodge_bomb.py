@@ -14,6 +14,7 @@ DELTA = { #移動量辞書
         pg.K_RIGHT:(+5, 0),
 }
 
+
 ALFA = {#方向転換辞書
     (0, 0): pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0), #初期状態 
     (0, -5): pg.transform.rotozoom(pg.transform.flip(pg.image.load("fig/3.png"),True, False), 90, 2.0), #上
@@ -25,7 +26,6 @@ ALFA = {#方向転換辞書
     (-5, 0): pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0), #左
     (-5, -5): pg.transform.rotozoom(pg.image.load("fig/3.png"), -45, 2.0), #左斜め上
     }
-
 
 
 def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
@@ -41,6 +41,7 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     if rct.top < 0 or HEIGHT < rct.bottom:
         tate = False
     return yoko, tate
+
 
 def gameOver(screen):
     """
@@ -72,6 +73,7 @@ def gameOver(screen):
     screen.blit(kk_img,kk_rct)
     pg.display.update()
     time.sleep(5)
+
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
@@ -109,7 +111,6 @@ def main():
 
         dx = ALFA[tuple(sum_mv)] #方向転換辞書それぞれの値をdxに与える
         screen.blit(dx, kk_rct)
-
 
         bb_rct.move_ip(vx, vy)
         yoko, tate = check_bound(bb_rct)
