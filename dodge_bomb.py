@@ -12,7 +12,7 @@ DELTA = { #移動量辞書
         pg.K_DOWN: (0, +5),
         pg.K_LEFT: (-5, 0),
         pg.K_RIGHT:(+5, 0),
-}
+        }
 
 
 ALFA = {#方向転換辞書
@@ -43,6 +43,13 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     return yoko, tate
 
 
+def bird():
+    """
+    作成した方向展開辞書をそのまま返す関数
+    """
+    return ALFA
+
+
 def gameOver(screen):
     """
     こうかとんが爆弾に衝突した際に
@@ -61,9 +68,6 @@ def gameOver(screen):
     txt = fonto.render("Game Over",True,(255, 255, 255))
     txt_rct = txt.get_rect()
     txt_rct.center=WIDTH/2, HEIGHT/2
-    # block = pg.Surface((WIDTH,HEIGHT))
-    # block_rct = block.get_rect()
-    # screen.blit(block, block_rct)
     screen.blit(txt,txt_rct)
     kk_img = pg.transform.rotozoom(pg.image.load("fig/8.png"), 0, 2.0)
     kk_rct = kk_img.get_rect()
