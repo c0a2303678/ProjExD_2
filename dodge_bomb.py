@@ -113,7 +113,7 @@ def main():
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
 
-        dx = ALFA[tuple(sum_mv)] #方向転換辞書それぞれの値をdxに与える
+        dx = bird[tuple(sum_mv)] #方向転換辞書それぞれの値をdxに与える
         screen.blit(dx, kk_rct)
 
         bb_rct.move_ip(vx, vy)
